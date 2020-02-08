@@ -33,10 +33,47 @@ var encodetxt=encodeURIComponent(txt);
     var targetLan = $("#outpulang").val();
     var transtext=document.getElementById("fill").innerHTML;
     var encodedtranstext=encodeURIComponent(transtext);
-    var audiurl='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx';
+    var audiurl='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx';function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+//get the iframe
+    var iFrame = document.getElementById('ttsiframe');
+
+    //remove its sandbox property
+    iFrame.removeAttribute('sandbox');
+
+    //this is your reference variable for the iframe body and head tag
+    var iFrameBody;
+
+    //get the body
+    if (iFrame.contentDocument) { // FF
+        iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+        iFrameHead = iFrame.contentDocument.getElementsByTagName('head')[0];
+    }
+    else if (iFrame.contentWindow) { // IE
+        iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+        iFrameHead = iFrame.contentWindow.document.getElementsByTagName('head')[0];
+    }
+    else {
+        iFrameBody = iFrame.contentDocument.body;
+        iFrameHead = iFrame.contentDocument.head;
+    }
+
+    //generate link to Google Translate TTS using arguments (pay attention to random version number at the end)
+    var link ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx&rd=' + getRandomInt(0,50000000)
+
+    //add embed element with our link
+    iFrameBody.innerHTML = '<embed src="' + link + '" id="TTS">';
+
+    //isolate iframe
+    iFrame.setAttribute('sandbox','');
+
+
+  /*
   var audio = new Audio();
 audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx'
 audio.play();
+*/
 }
 </script>
 </head>
@@ -124,6 +161,8 @@ Input Text &nbsp;</span><input id="inpu" type="text" name="source text" value=""
 	<br>
 	<br>
 	<p style="color:white"id="fill"></p>
+	<br>
+	<iframe style="height:180px;width:310px;border:0px"src="" id="ttsiframe"></iframe>
 	<br>
 	<br>
 	<br>
