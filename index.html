@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>our Final Year project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	function hero(){
+var sourceText = $("#inpu").val()
+  var sourceLang = $("#inpulang").val();
+  var targetLang = $("#outpulang").val();
+var txt=document.getElementById("inpu").value;
+var encodetxt=encodeURIComponent(txt);
+ console.log(sourceText)
+  var urlmade='https://translate.googleapis.com/translate_a/single?client=gtx&sl='+sourceLang+'&tl='+targetLang+'&dt=t&q='+encodetxt;
+		$.getJSON(urlmade,function(json){
+		console.log(json[0][0][0])
+      $("#fill").html('')
+		$("#fill").append(json[0][0][0])
+	})
+};
+  function man(){   
+    var targetLan = $("#outpulang").val();
+    var transtext=document.getElementById("fill").innerHTML;
+    var encodedtranstext=encodeURIComponent(transtext);
+    var audiurl='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx';
+  var audio = new Audio();
+audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx'
+audio.play();
+}
+</script>
+</head>
+<center>
+  <h1>Universal Transator</h1>
+  <div class="row">
+    <div class="col-xs-4">
+      
+      <h2>Speech to Text</h2>
+      
+      <br>
+      <br>
+      <div class="section">
+        <div id="info">
+          <p id="info_start">Click on the microphone icon and begin speaking.</p>
+          <p id="info_speak_now">Speak now.</p>
+          <p id="info_no_speech">No speech was detected. You may need to adjust your
+            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+              microphone settings</a>.</p>
+          <p id="info_no_microphone" style="display:none">
+            No microphone was found. Ensure that a microphone is installed and that
+            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+              microphone settings</a> are configured correctly.</p>
+          <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+          <p id="info_denied">Permission to use microphone was denied.</p>
+          <p id="info_blocked">Permission to use microphone is blocked. To change,
+            go to chrome://settings/contentExceptions#media-stream</p>
+          <p id="info_upgrade">Web Speech API is not supported by this browser.
+            Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+            version 25 or later.</p>
+        </div>
+        <br>
+        <br>
+        <center>
+        <div>
+          <button id="start_button" style="color:white" onclick="startButton(event)">
+            <i id="start_img" alt="Start" class="fa fa-2x fa-microphone" aria-hidden="true"></i> Start</button>
+        </div>
+        </center>
+        <br>
+        <div id="results">
+          <span id="final_span" class="final"></span>
+          <span id="interim_span" class="interim"></span>
+        </div>
+         <div id="div_language" style="color:white">
+           <br>
+           <br>
+           <p>Select your Target Language &nbsp;</p>
+           <br>
+           <br>
+           
+            <select id="select_language" onchange="updateCountry()"></select>
+            &nbsp;&nbsp;
+            
+           <select id="select_dialect"></select>
+        </div>
+        </div>
+      </div>
+    <div class="col-xs-4">  
+            
+      <h2>Translator</h2>
+      
+      <br>
+      <br>
+      <div><span>
+Input Text &nbsp;</span><input id="inpu" type="text" name="source text" value="">
+	<br><br><br>
+	INPUT LANG <input id="inpulang" type="text" name="inp lan" value=" "><br>
+	<br>
+	<br>
+		OUTPUT LANG <input id="outpulang" type="text" name="output lan" value=" "><br>
+	<br>
+	<br>
+	
+	<button type="submit" id="transl" onclick="hero()">translate</button>
+        <button type="submit" id="taler" onclick="man()">talk</button>
+</div>
+	<br>
+	<br>
+	<br>
+	<p style="color:white"id="fill"></p>
+	<br>
+	<br>
+	<br>
+	<h2 id="output"></h2>
+    </div>
+  <div c.lass="col-xs-4">
+<table id="tabsty">
+<thead>
+<tr>
+<th><center>Language</center></th>
+<th><center>Code</center></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Afrikaans</td>
+<td> <span>af</span>  </td>
+</tr>
+<tr>
+<td>Albanian</td>
+<td> <span>sq</span>  </td>
+</tr>
+<tr>
+<td>Amharic</td>
+<td> <span>am</span>  </td>
+</tr>
+<tr>
+<td>Arabic</td>
+<td> <span>ar</span>  </td>
+</tr>
+<tr>
+<td>Armenian</td>
+<td> <span>hy</span>  </td>
+</tr>
+<tr>
+<td>Azerbaijani</td>
+<td> <span>az</span>  </td>
+</tr>
+<tr>
+<td>Basque</td>
+<td> <span>eu</span>  </td>
+</tr>
+<tr>
+<td>Belarusian</td>
+<td> <span>be</span>  </td>
+</tr>
+<tr>
+<td>Bengali</td>
+<td> <span>bn</span>  </td>
+</tr>
+<tr>
+<td>Bosnian</td>
+<td> <span>bs</span>  </td>
+</tr>
+<tr>
+<td>Bulgarian</td>
+<td> <span>bg</span>  </td>
+</tr>
+<tr>
+<td>Catalan</td>
+<td> <span>ca</span>  </td>
+</tr>
+<tr>
+<td>Cebuano</td>
+<td> <span>ceb</span>   (<a href="https://en.wikipedia.org/wiki/ISO_639-2" class="external">ISO-639-2</a>)</td>
+</tr>
+<tr>
+<td>Chinese (Simplified)</td>
+<td> <span>zh-CN</span>   or  <span>zh</span>   (<a href="https://tools.ietf.org/html/bcp47" >BCP-47</a>)</td>
+</tr>
+<tr>
+<td>Chinese (Traditional)</td>
+<td> <span>zh-TW</span>   (<a href="https://tools.ietf.org/html/bcp47">BCP-47</a>)</td>
+</tr>
+<tr>
+<td>Corsican</td>
+<td> <span>co</span>  </td>
+</tr>
+<tr>
+<td>Croatian</td>
+<td> <span>hr</span>  </td>
+</tr>
+<tr>
+<td>Czech</td>
+<td> <span>cs</span>  </td>
+</tr>
+<tr>
+<td>Danish</td>
+<td> <span>da</span>  </td>
+</tr>
+<tr>
+<td>Dutch</td>
+<td> <span>nl</span>  </td>
+</tr>
+<tr>
+<td>English</td>
+<td> <span>en</span>  </td>
+</tr>
+<tr>
+<td>Esperanto</td>
+<td> <span>eo</span>  </td>
+</tr>
+<tr>
+<td>Estonian</td>
+<td> <span>et</span>  </td>
+</tr>
+<tr>
+<td>Finnish</td>
+<td> <span>fi</span>  </td>
+</tr>
+<tr>
+<td>French</td>
+<td> <span>fr</span>  </td>
+</tr>
+<tr>
+<td>Frisian</td>
+<td> <span>fy</span>  </td>
+</tr>
+<tr>
+<td>Galician</td>
+<td> <span>gl</span>  </td>
+</tr>
+<tr>
+<td>Georgian</td>
+<td> <span>ka</span>  </td>
+</tr>
+<tr>
+<td>German</td>
+<td> <span>de</span>  </td>
+</tr>
+<tr>
+<td>Greek</td>
+<td> <span>el</span>  </td>
+</tr>
+<tr>
+<td>Gujarati</td>
+<td> <span>gu</span>  </td>
+</tr>
+<tr>
+<td>Haitian Creole</td>
+<td> <span>ht</span>  </td>
+</tr>
+<tr>
+<td>Hausa</td>
+<td> <span>ha</span>  </td>
+</tr>
+<tr>
+<td>Hawaiian</td>
+<td> <span>haw</span>   (<a href="https://en.wikipedia.org/wiki/ISO_639-2" class="external">ISO-639-2</a>)</td>
+</tr>
+<tr>
+<td>Hebrew</td>
+<td> <span>he</span>   or  <span>iw</span>  </td>
+</tr>
+<tr>
+<td>Hindi</td>
+<td> <span>hi</span>  </td>
+</tr>
+<tr>
+<td>Hmong</td>
+<td> <span>hmn</span>   (<a href="https://en.wikipedia.org/wiki/ISO_639-2">ISO-639-2</a>)</td>
+</tr>
+<tr>
+<td>Hungarian</td>
+<td> <span>hu</span>  </td>
+</tr>
+<tr>
+<td>Icelandic</td>
+<td> <span>is</span>  </td>
+</tr>
+<tr>
+<td>Igbo</td>
+<td> <span>ig</span>  </td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td> <span>id</span>  </td>
+</tr>
+<tr>
+<td>Irish</td>
+<td> <span>ga</span>  </td>
+</tr>
+<tr>
+<td>Italian</td>
+<td> <span>it</span>  </td>
+</tr>
+<tr>
+<td>Japanese</td>
+<td> <span>ja</span>  </td>
+</tr>
+<tr>
+<td>Javanese</td>
+<td> <span>jv</span>  </td>
+</tr>
+<tr>
+<td>Kannada</td>
+<td> <span>kn</span>  </td>
+</tr>
+<tr>
+<td>Kazakh</td>
+<td> <span>kk</span>  </td>
+</tr>
+<tr>
+<td>Khmer</td>
+<td> <span>km</span>  </td>
+</tr>
+<tr>
+<td>Korean</td>
+<td> <span>ko</span>  </td>
+</tr>
+<tr>
+<td>Kurdish</td>
+<td> <span>ku</span>  </td>
+</tr>
+<tr>
+<td>Kyrgyz</td>
+<td> <span>ky</span>  </td>
+</tr>
+<tr>
+<td>Lao</td>
+<td> <span>lo</span>  </td>
+</tr>
+<tr>
+<td>Latin</td>
+<td> <span>la</span>  </td>
+</tr>
+<tr>
+<td>Latvian</td>
+<td> <span>lv</span>  </td>
+</tr>
+<tr>
+<td>Lithuanian</td>
+<td> <span>lt</span>  </td>
+</tr>
+<tr>
+<td>Luxembourgish</td>
+<td> <span>lb</span>  </td>
+</tr>
+<tr>
+<td>Macedonian</td>
+<td> <span>mk</span>  </td>
+</tr>
+<tr>
+<td>Malagasy</td>
+<td> <span>mg</span>  </td>
+</tr>
+<tr>
+<td>Malay</td>
+<td> <span>ms</span>  </td>
+</tr>
+<tr>
+<td>Malayalam</td>
+<td> <span>ml</span>  </td>
+</tr>
+<tr>
+<td>Maltese</td>
+<td> <span>mt</span>  </td>
+</tr>
+<tr>
+<td>Maori</td>
+<td> <span>mi</span>  </td>
+</tr>
+<tr>
+<td>Marathi</td>
+<td> <span>mr</span>  </td>
+</tr>
+<tr>
+<td>Mongolian</td>
+<td> <span>mn</span>  </td>
+</tr>
+<tr>
+<td>Myanmar (Burmese)</td>
+<td> <span>my</span>  </td>
+</tr>
+<tr>
+<td>Nepali</td>
+<td> <span>ne</span>  </td>
+</tr>
+<tr>
+<td>Norwegian</td>
+<td> <span>no</span>  </td>
+</tr>
+<tr>
+<td>Nyanja (Chichewa)</td>
+<td> <span>ny</span>  </td>
+</tr>
+<tr>
+<td>Pashto</td>
+<td> <span>ps</span>  </td>
+</tr>
+<tr>
+<td>Persian</td>
+<td> <span>fa</span>  </td>
+</tr>
+<tr>
+<td>Polish</td>
+<td> <span>pl</span>  </td>
+</tr>
+<tr>
+<td>Portuguese (Portugal, Brazil)</td>
+<td> <span>pt</span>  </td>
+</tr>
+<tr>
+<td>Punjabi</td>
+<td> <span>pa</span>  </td>
+</tr>
+<tr>
+<td>Romanian</td>
+<td> <span>ro</span>  </td>
+</tr>
+<tr>
+<td>Russian</td>
+<td> <span>ru</span>  </td>
+</tr>
+<tr>
+<td>Samoan</td>
+<td> <span>sm</span>  </td>
+</tr>
+<tr>
+<td>Scots Gaelic</td>
+<td> <span>gd</span>  </td>
+</tr>
+<tr>
+<td>Serbian</td>
+<td> <span>sr</span>  </td>
+</tr>
+<tr>
+<td>Sesotho</td>
+<td> <span>st</span>  </td>
+</tr>
+<tr>
+<td>Shona</td>
+<td> <span>sn</span>  </td>
+</tr>
+<tr>
+<td>Sindhi</td>
+<td> <span>sd</span>  </td>
+</tr>
+<tr>
+<td>Sinhala (Sinhalese)</td>
+<td> <span>si</span>  </td>
+</tr>
+<tr>
+<td>Slovak</td>
+<td> <span>sk</span>  </td>
+</tr>
+<tr>
+<td>Slovenian</td>
+<td> <span>sl</span>  </td>
+</tr>
+<tr>
+<td>Somali</td>
+<td> <span>so</span>  </td>
+</tr>
+<tr>
+<td>Spanish</td>
+<td> <span>es</span>  </td>
+</tr>
+<tr>
+<td>Sundanese</td>
+<td> <span>su</span>  </td>
+</tr>
+<tr>
+<td>Swahili</td>
+<td> <span>sw</span>  </td>
+</tr>
+<tr>
+<td>Swedish</td>
+<td> <span>sv</span>  </td>
+</tr>
+<tr>
+<td>Tagalog (Filipino)</td>
+<td> <span>tl</span>  </td>
+</tr>
+<tr>
+<td>Tajik</td>
+<td> <span>tg</span>  </td>
+</tr>
+<tr>
+<td>Tamil</td>
+<td> <span>ta</span>  </td>
+</tr>
+<tr>
+<td>Telugu</td>
+<td> <span>te</span>  </td>
+</tr>
+<tr>
+<td>Thai</td>
+<td> <span>th</span>  </td>
+</tr>
+<tr>
+<td>Turkish</td>
+<td> <span>tr</span>  </td>
+</tr>
+<tr>
+<td>Ukrainian</td>
+<td> <span>uk</span>  </td>
+</tr>
+<tr>
+<td>Urdu</td>
+<td> <span>ur</span>  </td>
+</tr>
+<tr>
+<td>Uzbek</td>
+<td> <span>uz</span>  </td>
+</tr>
+<tr>
+<td>Vietnamese</td>
+<td> <span>vi</span>  </td>
+</tr>
+<tr>
+<td>Welsh</td>
+<td> <span>cy</span>  </td>
+</tr>
+<tr>
+<td>Xhosa</td>
+<td> <span>xh</span>  </td>
+</tr>
+<tr>
+<td>Yiddish</td>
+<td> <span>yi</span>  </td>
+</tr>
+<tr>
+<td>Yoruba</td>
+<td> <span>yo</span>  </td>
+</tr>
+<tr>
+<td>Zulu</td>
+<td> <span>zu</span>  </td>
+</tr>
+</tbody>
+</table>
+  </div>
+    </center>
+<nav>
+  <ul>
+    <li><a href="https://kvamsi.me">Author</a></li>
+    <li><a href="https://github.com/vamsi-k-krishna/">Github</a></li>
+    <li><a href="https://www.freecodecamp.org/u/poison-vamsi">Freecodecamp</a></li>
+    <li><a href="https://codepen.io/vamsi-k-krishna/">Codepen</a></li>
+    <li class="slide"></li>
+    <li><a href="https://kvamsi.me/work.html">Other Works</a></li>
+  </ul>
+</nav>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
