@@ -35,7 +35,7 @@ var encodetxt=encodeURIComponent(txt);
     var encodedtranstext=encodeURIComponent(transtext);
     var audiurl='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx';
   var audio = new Audio();
-audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx&rel="noreferrer"'
+audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx'
 audio.play();
 }
 </script>
@@ -110,10 +110,10 @@ audio.play();
       <div><span>
 Input Text &nbsp;</span><input id="inpu" type="text" name="source text" value="">
 	<br><br><br>
-	INPUT LANG <input id="inpulang" type="text" name="inp lan" value=" "><br>
+	INPUT LANG <input id="inpulang" type="text" name="inp lan" value=""><br>
 	<br>
 	<br>
-		OUTPUT LANG <input id="outpulang" type="text" name="output lan" value=" "><br>
+		OUTPUT LANG <input id="outpulang" type="text" name="output lan" value=""><br>
 	<br>
 	<br>
 	
