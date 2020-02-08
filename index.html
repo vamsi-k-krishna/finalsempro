@@ -35,7 +35,7 @@ var encodetxt=encodeURIComponent(txt);
     var encodedtranstext=encodeURIComponent(transtext);
     var audiurl='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx';
   var audio = new Audio();
-audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx'
+audio.src ='https://translate.google.co.in/translate_tts?ie=UTF-8&q='+encodedtranstext+'&tl='+targetLan+'&client=gtx&rel="noreferrer"'
 audio.play();
 }
 </script>
